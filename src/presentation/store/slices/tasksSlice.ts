@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import taskManager from "../../domain/TaskManager";
+import taskManager from "../../../domain/TaskManager";
 
 // Интерфейс задачи
 interface Task {

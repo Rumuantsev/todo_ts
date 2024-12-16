@@ -1,6 +1,6 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { reorderTasks } from "../redux/tasksSlice";
+import { reorderTasks } from "../store/slices/tasksSlice";
 import Task from "./Task";
 import TaskInput from "./TaskInput";
 import NoTask from "./NoTask";
@@ -10,7 +10,7 @@ import {
   Draggable,
   DropResult,
 } from "react-beautiful-dnd";
-import { RootState } from "../redux/store";
+import { RootState } from "../store/store";
 
 // Интерфейс для задачи
 interface Task {

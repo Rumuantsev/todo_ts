@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
-import { deleteTask, editTask } from "../redux/tasksSlice";
+import { deleteTask, editTask } from "../store/slices/tasksSlice";
 import DeleteModal from "./DeleteModal";
 import EditModal from "./EditModal";
 import ShareModal from "./ShareModal";

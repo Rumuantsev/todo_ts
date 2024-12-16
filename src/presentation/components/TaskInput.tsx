@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
-import { addTask } from "../redux/tasksSlice";
+import { addTask } from "../store/slices/tasksSlice";
 
 // Интерфейс для задачи
 interface Task {
