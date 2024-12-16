@@ -1,0 +1,59 @@
+.share_modal {
+    .share_modal_content {
+        display: flex;
+        flex-direction: column;
+        background: #1B1A17;
+        padding: 18px;
+        margin-top: auto;
+        width: 55%;
+        border-top-left-radius: 8px;
+        border-top-right-radius: 8px;
+
+        .share_modal_buttons {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            button {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                background: #23221F;
+                border-radius: 1000px;
+                width: 48px;
+                height: 48px;
+                margin-right: 18px;
+                border-radius: 50%;
+                border: none;
+            }
+
+            button:last-child {
+                margin: 0;
+            }
+
+            button:hover {
+                border: 1px solid #FF8303;
+            }
+        }
+    }
+}
+
+@media (max-width: 768px) {
+    .share_modal {
+        .share_modal_content {
+            width: 100%;
+            margin-left: 5%;
+            margin-right: 5%;
+        }
+    }
+}
+
+@media (max-width: 425px) {
+    .share_modal {
+        .share_modal_content {
+            width: 100%;
+            margin-left: 5%;
+            margin-right: 5%;
+        }
+    }
+}

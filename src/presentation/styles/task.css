@@ -1,0 +1,91 @@
+.task_container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin: auto;
+  margin-top: 16px;
+}
+.task_container .task_content {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  border: 2px #A35709 solid;
+  border-radius: 8px;
+  min-height: 72px;
+  height: auto;
+  background: #242320;
+  padding: 8px 16px;
+}
+.task_container .task_content .task_text {
+  transition: width 0.3s ease-in-out;
+  margin-top: 0px;
+}
+.task_container .task_content .task_text h3 {
+  height: auto;
+  color: #F0E3CA;
+  font-size: 22px;
+  width: 100%;
+  height: auto;
+  overflow-wrap: break-word;
+  margin: 0px;
+}
+.task_container .task_content .task_text p {
+  color: #F0E3CA;
+  font-size: 14px;
+  width: 100%;
+  height: auto;
+  overflow-wrap: break-word;
+  margin: 0;
+  margin-top: 5px;
+}
+.task_container .task_content .task_button button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 2px #A35709 solid;
+  border-radius: 8px;
+  width: 36px;
+  height: 36px;
+  background: #1B1A17;
+}
+.task_container .task_content .task_button button img {
+  width: 11px;
+  height: 11px;
+}
+.task_container .task_content .task_button button:hover {
+  background: #23221F;
+}
+.task_container .task_options {
+  display: none;
+  justify-content: flex-end;
+  text-align: center;
+  transition: transform 0.5s ease, opacity 0.5s ease;
+}
+.task_container .task_options .task_options_buttons {
+  display: flex;
+}
+.task_container .task_options .task_options_buttons button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 5px;
+  margin-left: 5px;
+  padding: 10px;
+  height: 36px;
+  width: 36px;
+  background: #242320;
+  border: 1px #A35709 solid;
+  border-radius: 6px;
+}
+.task_container .task_options .task_options_buttons button img {
+  width: 16px;
+  height: 16px;
+}
+.task_container .task_options .task_options_buttons button:hover {
+  background: #2B2A27;
+}
+
+.task_container:hover .task_options {
+  display: flex;
+}/*# sourceMappingURL=task.css.map */
