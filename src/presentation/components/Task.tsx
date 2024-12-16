@@ -7,7 +7,7 @@ import ShareModal from "./ShareModal";
 
 // Описание пропсов компонента Task
 interface TaskProps {
-  id: string;
+  id: number;
   title: string;
   about: string;
 }
@@ -88,7 +88,7 @@ const Task: React.FC<TaskProps> = ({ id, title, about }) => {
       }`;
 
   return (
-    <div className="task_container" id={id}>
+    <div className="task_container" id={id.toString()}>
       <div className="task_content">
         <div className="task_text">
           <h3>{displayedTitle}</h3>

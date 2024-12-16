@@ -7,7 +7,7 @@ interface Task {
 }
 
 class TaskManager {
-  private repository: LocalTaskStorage;
+  public repository: LocalTaskStorage;
 
   constructor() {
     this.repository = storage;
