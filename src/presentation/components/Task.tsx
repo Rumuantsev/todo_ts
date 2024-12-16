@@ -1,11 +1,15 @@
 import React, { useState } from "react";
-import { useDispatch } from "react-redux";
-import { deleteTask, editTask } from "../store/slices/tasksSlice";
+import { useDispatch, useSelector } from "react-redux";
+import { RootState } from "../store/store";
+import {
+  deleteTask,
+  editTask,
+  togglePinTask,
+} from "../store/slices/tasksSlice";
 import DeleteModal from "./DeleteModal";
 import EditModal from "./EditModal";
 import ShareModal from "./ShareModal";
 
-// Описание пропсов компонента Task
 interface TaskProps {
   id: number;
   title: string;
@@ -88,7 +92,17 @@ const Task: React.FC<TaskProps> = ({ id, title, about }) => {
       }`;
 
   return (
-    <div className="task_container" id={id.toString()}>
+    <div
+      className={`task_container ${
+        useSelector(
+          (state: RootState) =>
+            state.tasks.find((task) => task.id === id)?.isPinned
+        )
+          ? "pinned"
+          : ""
+      }`}
+      id={id.toString()}
+    >
       <div className="task_content">
         <div className="task_text">
           <h3>{displayedTitle}</h3>
@@ -125,6 +139,20 @@ const Task: React.FC<TaskProps> = ({ id, title, about }) => {
               className="edit_img"
               src="/src/presentation/images/ic_edit.svg"
               alt="edit"
+            />
+          </button>
+          <button onClick={() => dispatch(togglePinTask(id))}>
+            <img
+              className="pin_img"
+              src={
+                useSelector(
+                  (state: RootState) =>
+                    state.tasks.find((task) => task.id === id)?.isPinned
+                )
+                  ? "/src/presentation/images/ic_unpin.svg"
+                  : "/src/presentation/images/ic_pin.svg"
+              }
+              alt="pin"
             />
           </button>
         </div>

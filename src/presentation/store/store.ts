@@ -7,7 +7,6 @@ const store = configureStore({
   },
 });
 
-// Типы для состояния и диспетчера
 export type RootState = ReturnType<typeof store.getState>;
 export type AppDispatch = typeof store.dispatch;
 

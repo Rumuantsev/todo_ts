@@ -4,6 +4,7 @@ interface Task {
   id: number;
   title: string;
   about: string;
+  isPinned: boolean;
 }
 
 class TaskManager {
@@ -31,6 +32,24 @@ class TaskManager {
 
   editTask(taskId: number, updatedTask: Omit<Task, "id">): Task | undefined {
     return this.repository.editTask(taskId, updatedTask);
+  }
+
+  pinTask(taskId: number): Task | undefined {
+    const task = this.getTask(taskId);
+    if (task) {
+      const updatedTask = { ...task, isPinned: true };
+      return this.editTask(taskId, updatedTask);
+    }
+    return undefined;
+  }
+
+  unpinTask(taskId: number): Task | undefined {
+    const task = this.getTask(taskId);
+    if (task) {
+      const updatedTask = { ...task, isPinned: false };
+      return this.editTask(taskId, updatedTask);
+    }
+    return undefined;
   }
 }
 

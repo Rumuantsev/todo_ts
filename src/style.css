@@ -90,6 +90,11 @@
   display: flex;
 }
 
+.task_container.pinned {
+  background-color: #18095c;
+  border-color: hwb(0 0% 0%);
+}
+
 .delete_modal .modal_content {
   background-color: #1B1A17;
   border-radius: 10px;

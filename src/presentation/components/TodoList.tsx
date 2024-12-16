@@ -12,15 +12,18 @@ import {
 } from "react-beautiful-dnd";
 import { RootState } from "../store/store";
 
-// Интерфейс для задачи
 interface Task {
   id: number;
   title: string;
   about: string;
+  isPinned: boolean;
 }
 
 const TodoList: React.FC = () => {
-  const tasks = useSelector((state: RootState) => state.tasks); // Типизация состояния
+  const tasks = useSelector((state: RootState) =>
+    [...state.tasks].sort((a, b) => Number(b.isPinned) - Number(a.isPinned))
+  );
+
   const dispatch = useDispatch();
 
   const handleOnDragEnd = (result: DropResult): void => {

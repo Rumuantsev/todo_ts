@@ -1,14 +1,13 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import taskManager from "../../../domain/TaskManager";
 
-// Интерфейс задачи
 interface Task {
   id: number;
   title: string;
   about: string;
+  isPinned: boolean;
 }
 
-// Интерфейс состояния задач
 type TasksState = Task[];
 
 const tasksSlice = createSlice({
@@ -19,7 +18,6 @@ const tasksSlice = createSlice({
       state,
       action: PayloadAction<{ key: string; tasks: Task[] }>
     ) => {
-      // Убираем использование `repository.storageKey`, так как он может быть постоянным
       return action.payload.tasks;
     },
 
@@ -41,10 +39,23 @@ const tasksSlice = createSlice({
       }>
     ) => {
       const { id, updatedTask } = action.payload;
-      taskManager.editTask(id, updatedTask as Omit<Task, "id">);
       const taskIndex = state.findIndex((task) => task.id === id);
       if (taskIndex !== -1) {
-        state[taskIndex] = { ...state[taskIndex], ...updatedTask };
+        state[taskIndex] = {
+          ...state[taskIndex],
+          ...updatedTask,
+        };
+        taskManager.editTask(id, state[taskIndex]);
+      }
+    },
+
+    togglePinTask: (state, action: PayloadAction<number>) => {
+      const taskIndex = state.findIndex((task) => task.id === action.payload);
+      if (taskIndex !== -1) {
+        const pinnedTasks = state.filter((task) => task.isPinned).length;
+        if (pinnedTasks < 3 || state[taskIndex].isPinned) {
+          state[taskIndex].isPinned = !state[taskIndex].isPinned;
+        }
       }
     },
 
@@ -59,6 +70,12 @@ const tasksSlice = createSlice({
   },
 });
 
-export const { setTasks, addTask, deleteTask, editTask, reorderTasks } =
-  tasksSlice.actions;
+export const {
+  setTasks,
+  addTask,
+  deleteTask,
+  editTask,
+  reorderTasks,
+  togglePinTask,
+} = tasksSlice.actions;
 export default tasksSlice.reducer;

@@ -88,4 +88,9 @@
 
 .task_container:hover .task_options {
   display: flex;
+}
+
+.task_container.pinned {
+  background-color: #18095c;
+  border-color: hwb(0 0% 0%);
 }/*# sourceMappingURL=task.css.map */

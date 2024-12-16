@@ -2,6 +2,7 @@ interface Task {
   id: number;
   title: string;
   about: string;
+  isPinned: boolean;
 }
 
 class LocalTaskStorage {
@@ -13,7 +14,12 @@ class LocalTaskStorage {
 
   getTasks(): Task[] {
     const tasksJson = localStorage.getItem(this.storageKey);
-    return tasksJson ? JSON.parse(tasksJson) : [];
+    return tasksJson
+      ? JSON.parse(tasksJson).map((task: Task) => ({
+          ...task,
+          isPinned: task.isPinned ?? false,
+        }))
+      : [];
   }
 
   getTask(taskId: number): Task | undefined {
@@ -23,7 +29,7 @@ class LocalTaskStorage {
 
   addTask(task: Omit<Task, "id">): Task {
     const tasks = this.getTasks();
-    const newTask: Task = { ...task, id: Date.now() };
+    const newTask: Task = { ...task, id: Date.now(), isPinned: false };
     tasks.push(newTask);
     localStorage.setItem(this.storageKey, JSON.stringify(tasks));
     return newTask;
@@ -41,9 +47,8 @@ class LocalTaskStorage {
     const updatedTasks = tasks.map((task) => {
       if (task.id === taskId) {
         return {
-          id: task.id,
-          title: updatedTask.title,
-          about: updatedTask.about,
+          ...task,
+          ...updatedTask,
         };
       }
       return task;
