@@ -94,7 +94,7 @@
             }
 
             button:hover {
-                background: #2B2A27;
+                border-color: #ffa500;
             }
         }
 
@@ -109,6 +109,7 @@
 }
 
 .task_container.pinned {
-    background-color: #18095c;
-    border-color: hwb(0 0% 0%);
+    .task_content {
+        border-color: #F0E3CA;
+    }
 }

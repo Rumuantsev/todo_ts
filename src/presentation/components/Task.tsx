@@ -149,8 +149,8 @@ const Task: React.FC<TaskProps> = ({ id, title, about }) => {
                   (state: RootState) =>
                     state.tasks.find((task) => task.id === id)?.isPinned
                 )
-                  ? "/src/presentation/images/ic_unpin.svg"
-                  : "/src/presentation/images/ic_pin.svg"
+                  ? "/src/presentation/images/unpin.svg"
+                  : "/src/presentation/images/pin.svg"
               }
               alt="pin"
             />

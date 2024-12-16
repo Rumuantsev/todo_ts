@@ -83,14 +83,13 @@
   height: 16px;
 }
 .task_container .task_options .task_options_buttons button:hover {
-  background: #2B2A27;
+  border-color: #ffa500;
 }
 
 .task_container:hover .task_options {
   display: flex;
 }
 
-.task_container.pinned {
-  background-color: #18095c;
-  border-color: hwb(0 0% 0%);
+.task_container.pinned .task_content {
+  border-color: #F0E3CA;
 }/*# sourceMappingURL=task.css.map */
