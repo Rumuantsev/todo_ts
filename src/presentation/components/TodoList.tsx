@@ -1,21 +1,29 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { addTask, reorderTasks } from "../redux/tasksSlice";
+import { reorderTasks } from "../redux/tasksSlice";
 import Task from "./Task";
 import TaskInput from "./TaskInput";
 import NoTask from "./NoTask";
-import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
+import {
+  DragDropContext,
+  Droppable,
+  Draggable,
+  DropResult,
+} from "react-beautiful-dnd";
+import { RootState } from "../redux/store";
 
-const TodoList = () => {
-  const tasks = useSelector((state) => state.tasks);
+// Интерфейс для задачи
+interface Task {
+  id: number;
+  title: string;
+  about: string;
+}
+
+const TodoList: React.FC = () => {
+  const tasks = useSelector((state: RootState) => state.tasks); // Типизация состояния
   const dispatch = useDispatch();
 
-  const onTaskCreated = (task) => {
-    const newTask = { ...task, id: Date.now() };
-    dispatch(addTask(newTask));
-  };
-
-  const handleOnDragEnd = (result) => {
+  const handleOnDragEnd = (result: DropResult): void => {
     const { source, destination } = result;
 
     if (!destination) return;
@@ -30,7 +38,7 @@ const TodoList = () => {
 
   return (
     <DragDropContext onDragEnd={handleOnDragEnd}>
-      <TaskInput onTaskCreated={onTaskCreated} />
+      <TaskInput />
       {tasks.length === 0 ? <NoTask /> : null}
       <Droppable droppableId="tasks">
         {(provided) => (

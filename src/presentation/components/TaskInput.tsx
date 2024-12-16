@@ -2,17 +2,25 @@ import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { addTask } from "../redux/tasksSlice";
 
-const TaskInput = () => {
-  const [title, setTitle] = useState("");
-  const [about, setAbout] = useState("");
+// Интерфейс для задачи
+interface Task {
+  id: number;
+  title: string;
+  about: string;
+}
+
+const TaskInput: React.FC = () => {
+  const [title, setTitle] = useState<string>(""); // Указываем тип для useState
+  const [about, setAbout] = useState<string>(""); // Указываем тип для useState
   const dispatch = useDispatch();
 
-  const handleAddTask = () => {
+  const handleAddTask = (): void => {
+    // Указываем тип для функции
     if (title.trim() === "" || about.trim() === "") {
       alert("Поля не должны быть пустыми.");
       return;
     }
-    const newTask = {
+    const newTask: Task = {
       id: Date.now(), // Генерация уникального ID
       title,
       about,

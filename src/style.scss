@@ -1,0 +1,141 @@
+@import './presentation/styles/task.scss';
+@import './presentation/styles/modal.scss';
+
+* {
+    font-family: Roboto;
+}
+
+body {
+    background: #1B1A17;
+    ;
+
+    .input_form {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin: auto;
+        width: 100%;
+
+        .text_forms {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+
+            input {
+                height: 18px;
+                width: 100%;
+                padding: 7px 14px;
+                border: 1px #A35709 solid;
+                background: #242320;
+                margin-bottom: 8px;
+                border-radius: 4px;
+                color: #F0E3CA;
+            }
+
+            input::placeholder {
+                color: #F0E3CAA3;
+            }
+
+            input:last-child {
+                margin: 0px;
+            }
+
+            input:focus {
+                outline: none;
+                border: 1px #FF8303 solid;
+                background: #2B2A27;
+                color: #F0E3CA;
+            }
+        }
+
+        .create_button {
+            margin-left: 45px;
+
+            button {
+                width: 72px;
+                height: 72px;
+                border: 2px #FF8303 solid;
+                background: #1B1A17;
+                color: #FF8303;
+                font-size: 50px;
+                width: 70px;
+                border-radius: 8px;
+
+                img {
+                    width: 24px;
+                    height: 24px;
+                    margin-bottom: 5px;
+                }
+            }
+
+            button:hover {
+                background: #23221F;
+            }
+        }
+    }
+}
+
+.no_tasks {
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    margin-top: 10%;
+    width: 30%;
+    height: 60px;
+    justify-content: center;
+    align-items: center;
+
+    p {
+        margin: auto;
+        font-family: Inter;
+        font-size: 24px;
+        color: white;
+    }
+}
+
+#root {
+    width: 50%;
+    margin: 0 auto;
+    transition: width 0.3s ease-in-out;
+}
+
+
+@media (min-width: 1025px) {
+    #root {
+        width: 50%;
+    }
+
+    .task_text {
+        width: 90%;
+    }
+}
+
+@media (max-width: 1024px) {
+    #root {
+        width: 60%;
+    }
+
+    .task_text {
+        width: 85%;
+    }
+}
+
+@media (max-width: 768px) {
+    #root {
+        width: 70%;
+    }
+
+    .task_text {
+        width: 80%;
+    }
+}
+
+@media (max-width: 425px) {
+    #root {
+        width: 100%;
+    }
+
+    .task_text {
+        width: 70%;
+    }
+}
