@@ -5,14 +5,29 @@ import DeleteModal from "./DeleteModal";
 import EditModal from "./EditModal";
 import ShareModal from "./ShareModal";
 
-const Task = ({ id, title, about }) => {
+// Описание пропсов компонента Task
+interface TaskProps {
+  id: string;
+  title: string;
+  about: string;
+}
+
+const Task: React.FC<TaskProps> = ({ id, title, about }) => {
   const dispatch = useDispatch();
 
-  const [isExpanded, setIsExpanded] = useState(false);
-  const [isDeleteModalVisible, setIsDeleteModalVisible] = useState(false);
-  const [isEditModalVisible, setIsEditModalVisible] = useState(false);
-  const [isShareModalVisible, setIsShareModalVisible] = useState(false);
-  const [currentTask, setCurrentTask] = useState({ title, about });
+  const [isExpanded, setIsExpanded] = useState<boolean>(false);
+  const [isDeleteModalVisible, setIsDeleteModalVisible] =
+    useState<boolean>(false);
+  const [isEditModalVisible, setIsEditModalVisible] = useState<boolean>(false);
+  const [isShareModalVisible, setIsShareModalVisible] =
+    useState<boolean>(false);
+  const [currentTask, setCurrentTask] = useState<{
+    title: string;
+    about: string;
+  }>({
+    title,
+    about,
+  });
 
   const handleInfo = () => {
     setIsExpanded(!isExpanded);
@@ -36,7 +51,7 @@ const Task = ({ id, title, about }) => {
     setIsEditModalVisible(true);
   };
 
-  const saveEdit = (newTitle, newAbout) => {
+  const saveEdit = (newTitle: string, newAbout: string) => {
     if (!newTitle || !newAbout) {
       alert("Поля не должны быть пустыми.");
       return;

@@ -54,4 +54,5 @@ class LocalTaskStorage {
 }
 
 const storage = new LocalTaskStorage();
+export { LocalTaskStorage, storage };
 export default storage;

@@ -1,28 +1,36 @@
-import storage from "../data/LocalTaskStorage.js";
+import { LocalTaskStorage, storage } from "../data/LocalTaskStorage";
+
+interface Task {
+  id: number;
+  title: string;
+  about: string;
+}
 
 class TaskManager {
+  private repository: LocalTaskStorage;
+
   constructor() {
     this.repository = storage;
   }
 
-  addTask(task) {
+  addTask(task: Omit<Task, "id">): Task {
     return this.repository.addTask(task);
   }
 
-  getTask(taskId) {
+  getTask(taskId: number): Task | undefined {
     return this.repository.getTask(taskId);
   }
 
-  getTasks() {
+  getTasks(): Task[] {
     return this.repository.getTasks();
   }
 
-  deleteTask(taskId) {
+  deleteTask(taskId: number): void {
     this.repository.deleteTask(taskId);
   }
 
-  editTask(taskId, updatedTask) {
-    this.repository.editTask(taskId, updatedTask);
+  editTask(taskId: number, updatedTask: Omit<Task, "id">): Task | undefined {
+    return this.repository.editTask(taskId, updatedTask);
   }
 }
 
